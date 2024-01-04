@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import Image from 'next/image'
 import Link from 'next/link'
 
-type Category = typeof PRODUCT_CATEGORIES[number]
+type Category = typeof PRODUCT_CATEGORIES[number] // check config/index.tsx
 
 interface NavItemProps {
   category: Category

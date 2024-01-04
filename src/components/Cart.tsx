@@ -52,11 +52,11 @@ const Cart = () => {
                         </div>
                         <div className="flex">
                             <span className="flex-1">Transaction Fee</span>
-                            <span>{formatPrice(fee)}</span>
+                            <span>{formatPrice(fee)}</span> {/* Check utils.tsx */}
                         </div>
                         <div className="flex">
                             <span className="flex-1">Total</span>
-                            <span>{formatPrice(fee)}</span>
+                            <span>{formatPrice(fee)}</span>  {/* Check utils.tsx */}
                         </div>
                     </div>
                     <SheetFooter>
@@ -75,8 +75,18 @@ const Cart = () => {
             <div className="flex h-full flex-col items-center justify-center space-y-1">
                 <div aria-hidden="true" className="relative mb-4 h-60 w-60 text-muted-foreground">
                     <Image src="/hippo-empty-cart.png" fill 
-                    alt="empty shopping cart"/>
+                    alt="empty shopping cart"
+                    />
                 </div>
+                <div className="text-xl font-semibold">Your Cart is empty</div>
+                <SheetTrigger asChild>
+                    <Link href="/products" className={buttonVariants({
+                        variant: "link", 
+                        size: "sm", 
+                        className: "text-sm text-muted-foreground"})}>
+                            Add items to your cart checkout
+                        </Link>
+                </SheetTrigger>
             </div>
         )}
       </SheetContent>

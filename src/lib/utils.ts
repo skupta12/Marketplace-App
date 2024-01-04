@@ -5,6 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+// function to format prices in USD EUR GBP
+
 export function formatPrice(
   price: number | string,
   options: {

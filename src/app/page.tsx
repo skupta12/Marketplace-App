@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ArrowDownToLine, CheckCircle, Leaf } from "lucide-react";
 
+// Creating our services as objects in array
+
 const perks = [
   {
     name: 'Instant Delivery',
@@ -29,7 +31,7 @@ const perks = [
 
 export default function Home() {
   return (
-    <>
+    <> {/* self closing tag used to wrap multiple elements without creating an additional DOM element. */}
       <MaxWidthWrapper>
         <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
@@ -41,7 +43,7 @@ export default function Home() {
             by our team to ensure our highest quality standarts
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
-            <Link href="/products" className={buttonVariants()}>
+            <Link href="/products" className={buttonVariants()}> {/* shadcn library to get already built variants of buttons(npx shadcn-ui@latest add button) */}
               Browse Trending
             </Link>
             <Button variant="ghost">Our Quality promise &rarr;</Button>
@@ -54,7 +56,7 @@ export default function Home() {
         <MaxWidthWrapper className="py-20">
           <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 
           lg:grid-cols-3 lg:gap-x-8 lg:gap-y-0">
-           {perks.map((perk) => (
+           {perks.map((perk) => ( /* map method to get values from objects in array */
               <div key={perk.name} className="text-center md:flex md:items-start md:text-left lg:block lg:text-center">
                 <div className="md:flex-shrink-0 flex justify-center">
                   <div className="h-16 w-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-900">
