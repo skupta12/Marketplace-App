@@ -4,10 +4,13 @@ import { Icons } from "./Icons";
 import NavItems from "./NavItems";
 import Cart from "./Cart";
 import { buttonVariants } from "./ui/button";
+import { getServerSideUser } from "@/lib/payload-utils";
+import { cookies } from "next/headers"
 
-const Navbar = () => {
+const Navbar = async () => {
 
-  const user = null;
+  const nextCookies = cookies()
+  const { user } = await getServerSideUser(nextCookies)
 
   return (
     <div className="bg-white sticky z-50 top-0 inset-x-0 h-16">
@@ -36,7 +39,7 @@ const Navbar = () => {
                     </Link>
                     )}
 
-                    {user ? null: (
+                    {user ? null : (
                     <span className="h-6 w-px bg-gray-200" aria-hidden="true"></span>
                     )}
 
