@@ -6,6 +6,7 @@ import { trpc } from "@/trpc/client";
 import { httpBatchLink } from "@trpc/client";
 
 const Providers = ({ children }: {children: ReactNode}) => {
+  
   const [queryClient] = useState(() => new QueryClient); // React query
   const [trpcClient] = useState(() =>
     trpc.createClient({

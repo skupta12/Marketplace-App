@@ -1,5 +1,3 @@
-// initialize CMS | yarn add dotenv | yarn add payload
-
 import dotenv from 'dotenv'
 import path from 'path'
 import type { InitOptions } from 'payload/config'
@@ -48,7 +46,7 @@ export const getPayloadClient = async ({
     cached.promise = payload.init({
       email: {
         transport: transporter,
-        fromAddress: 'bichara3333@gmail.com',
+        fromAddress: 'tosya@migothemes.com',
         fromName: 'DigitalMarketplace',
       },
       secret: process.env.PAYLOAD_SECRET,

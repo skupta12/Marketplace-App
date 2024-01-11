@@ -13,8 +13,10 @@ import {
   TAuthCredentialsValidator, 
   AuthCredentialsValidator, 
 } from "@/lib/validators/account-credentials-validator";
-import { z } from "zod"
+import { ZodError, z } from "zod"
 import { trpc } from "@/trpc/client";
+import { toast } from 'sonner'
+import { useRouter } from "next/navigation";
 
 const Page = () => {
 
@@ -26,12 +28,37 @@ const Page = () => {
     resolver: zodResolver(AuthCredentialsValidator),
   });
 
-  const { data } = trpc.anyApiRoute.useQuery()
-  console.log(data)
+  const router = useRouter()
+
+  // layout.tsx Toaster
+  const { mutate, isLoading } = 
+  trpc.auth.createPayloadUser.useMutation({
+    onError: (err) => {
+      if (err.data?.code === "CONFLICT") {
+        toast.error("This email is already in use. Sign in instead?")
+        return
+      }
+      
+      // if we correctly pass the input
+      if (err instanceof ZodError) {
+        toast.error(err.issues[0].message)
+        return
+      }
+
+      toast.error("Something wen wrong. Please try again.")
+    },
+    onSuccess: ({ sentToEmail }) => {
+      toast.success(`Verification email sent to ${sentToEmail}.`)
+      router.push("/verify-email?to=" + sentToEmail)
+    }
+  })
 
   const onSubmit = ({
-    email, password
-  }: TAuthCredentialsValidator) => {}
+    email, 
+    password,
+  }: TAuthCredentialsValidator) => {
+    mutate({ email, password })
+  }
   // send data to the server
 
   return (
@@ -71,6 +98,7 @@ const Page = () => {
                   <Label htmlFor="password">Password</Label>
                   <Input
                   {...register("password")}
+                  type = 'password'
                     className={cn({
                       "focus-visible:ring-red-500": errors.password,
                     })}
