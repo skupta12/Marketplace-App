@@ -8,6 +8,7 @@ dotenv.config({
   path: path.resolve(__dirname, '../.env'),
 })
 
+// email setup
 const transporter = nodemailer.createTransport({
   host: 'smtp.resend.com',
   secure: true,

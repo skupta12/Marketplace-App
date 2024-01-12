@@ -95,7 +95,7 @@ const Page = () => {
             </Link>
           </div>
 
-          <div className="grid gap-6">
+          <div className="grid gap-4">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid gap-2">
                 <div className="grid gap-1 py-2">
@@ -125,7 +125,6 @@ const Page = () => {
                   <p className="text-sm text-red-500">{errors.password.message}</p>
                   )}
                 </div>
-
                 <Button>Sign in</Button>
               </div>
             </form>

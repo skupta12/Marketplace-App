@@ -68,7 +68,7 @@ export const authRouter = router({
           collection: "users",
           data: {
             email,
-            password,           
+            password,
           },
           res,
         })

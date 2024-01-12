@@ -84,7 +84,9 @@ const Page = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid gap-2">
                 <div className="grid gap-1 py-2">
-                  <Label className="mb-2" htmlFor="email">Email</Label>
+                  <Label className="mb-2" htmlFor="email">
+                    Email
+                  </Label>
                   <Input
                     {...register("email")}
                     className={cn({
@@ -93,24 +95,65 @@ const Page = () => {
                     placeholder="your@example.com"
                   />
                   {errors?.email && (
-                  <p className="text-sm text-red-500">{errors.email.message}</p>
+                    <p className="text-sm text-red-500">
+                      {errors.email.message}
+                    </p>
                   )}
                 </div>
                 <div className="grid gap-1 py-2">
-                  <Label className="mb-2" htmlFor="password">Password</Label>
+                  <Label className="mb-2" htmlFor="password">
+                    Password
+                  </Label>
                   <Input
-                  {...register("password")}
-                  type = 'password'
+                    {...register("password")}
+                    type="password"
                     className={cn({
                       "focus-visible:ring-red-500": errors.password,
                     })}
                     placeholder="Password"
                   />
-                   {errors?.password && (
-                  <p className="text-sm text-red-500">{errors.password.message}</p>
+                  {errors?.password && (
+                    <p className="text-sm text-red-500">
+                      {errors.password.message}
+                    </p>
                   )}
                 </div>
 
+                
+                  
+                <div className="grid gap-1 py-2">
+                  <Label className="mb-2" htmlFor="password">
+                    Confirm password
+                  </Label>
+                  <Input
+                    // {...register("password")}
+                    type="password"
+                    className={cn({
+                      "focus-visible:ring-red-500": false,
+                    })}
+                    placeholder="Password"
+                  />
+                  {errors?.password && (
+                    <p className="text-sm text-red-500">
+                      {/* {errors.password.message} */}
+                    </p>
+                  )}
+                </div>
+
+                <div className="grid gap-1 py-2">
+                  <Label className="mb-2" htmlFor="phone-number">
+                    Phone number
+                  </Label>
+                  <Input
+                    // ...register("password")
+                    type="tel"
+                    className={cn({
+                      "focus-visible:ring-red-500": false,
+                    })}
+                    placeholder="Phone number"
+                  />
+                  {/* {errors?.password && <p className="text-sm text-red-500"></p>} */}
+                </div>
                 <Button>Sign up</Button>
               </div>
             </form>

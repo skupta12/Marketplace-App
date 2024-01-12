@@ -9,13 +9,7 @@ import { inferAsyncReturnType } from "@trpc/server";
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 
-const createContext = ({
-  req, 
-  res
-  }:  trpcExpress.CreateExpressContextOptions) => ({
-  req,
-  res,
-  })
+const createContext = ({ req, res }:  trpcExpress.CreateExpressContextOptions) => ({ req, res })
 
 export type ExpressContent = inferAsyncReturnType<typeof createContext>
 
