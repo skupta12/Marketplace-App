@@ -118,42 +118,24 @@ const Page = () => {
                     </p>
                   )}
                 </div>
-
-                
-                  
-                <div className="grid gap-1 py-2">
-                  <Label className="mb-2" htmlFor="password">
-                    Confirm password
+                  <div className="grid gap-1 py-2">
+                  <Label className="mb-2" htmlFor="phoneNumber">
+                    Phone number (optional)
                   </Label>
                   <Input
                     // {...register("password")}
-                    type="password"
+                    type="tel"
                     className={cn({
                       "focus-visible:ring-red-500": false,
                     })}
                     placeholder="Password"
                   />
-                  {errors?.password && (
+                  {/* {errors?.password && (
                     <p className="text-sm text-red-500">
-                      {/* {errors.password.message} */}
+                      {errors.password.message}
                     </p>
-                  )}
-                </div>
-
-                <div className="grid gap-1 py-2">
-                  <Label className="mb-2" htmlFor="phone-number">
-                    Phone number
-                  </Label>
-                  <Input
-                    // ...register("password")
-                    type="tel"
-                    className={cn({
-                      "focus-visible:ring-red-500": false,
-                    })}
-                    placeholder="Phone number"
-                  />
-                  {/* {errors?.password && <p className="text-sm text-red-500"></p>} */}
-                </div>
+                  )} */}
+                </div>      
                 <Button>Sign up</Button>
               </div>
             </form>
