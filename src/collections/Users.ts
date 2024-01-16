@@ -1,3 +1,4 @@
+// collection config => generate:types
 import { CollectionConfig } from "payload/types";
 
 export const Users: CollectionConfig = {

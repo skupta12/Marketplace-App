@@ -1,7 +1,8 @@
+// collection config => generate:types
 import { User } from "@/payload-types";
 import { Access, CollectionConfig } from "payload/types";
 
-const isAdminOrHasAccesToImages = (): Access => async ({ req }) => {
+const isAdminOrHasAccessToImages = (): Access => async ({ req }) => {
 
   const user = req.user as User | undefined
 
@@ -11,7 +12,7 @@ const isAdminOrHasAccesToImages = (): Access => async ({ req }) => {
   return {
     user: {
       equals: req.user.id,
-    }
+    },
   }
 }
 
@@ -32,10 +33,10 @@ export const Media: CollectionConfig = {
         return true
       }
 
-      return await isAdminOrHasAccesToImages()({ req })
+      return await isAdminOrHasAccessToImages()({ req })
     },
-    delete: isAdminOrHasAccesToImages(),
-    update: isAdminOrHasAccesToImages(),
+    delete: isAdminOrHasAccessToImages(),
+    update: isAdminOrHasAccessToImages(),
   },
   admin: {
     hidden: ({ user }) => user.role !== "admin"

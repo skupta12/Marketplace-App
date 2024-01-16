@@ -22,7 +22,7 @@ export const authRouter = router({
             equals: email,
           },
         },
-      });
+      })
 
       if (users.length !== 0) throw new TRPCError({ code: "CONFLICT" })
 
