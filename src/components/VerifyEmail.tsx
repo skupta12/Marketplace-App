@@ -52,7 +52,7 @@ const VerifyEmail = ({ token }: VerifyEmailProps) => {
     if (isLoading) {
       return (
         <div className="flex flex-col items-center gap-2">
-          <Loader2 className="animate-spin h-8 w-8 text-zink-300" />
+          <Loader2 className="animate-spin h-8 w-8 text-zinc-300" />
           <h3 className="font-semibold text-xl">Verifying...</h3>
           <p className="text-muted-foreground text-sm">
             This token is not valid or might be expired.
