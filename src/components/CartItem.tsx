@@ -2,6 +2,7 @@
 
 import { PRODUCT_CATEGORIES } from "@/config";
 import { useCart } from "@/hooks/useCart";
+import { formatPrice } from "@/lib/utils";
 import { Product } from "@/payload-types";
 import { ImageIcon, X } from "lucide-react";
 import Image from "next/image"
@@ -13,7 +14,6 @@ const CartItem = ({ product }: {product: Product}) => {
   )?.label
 
   const { removeItem } = useCart()
-
   const { image } = product.images[0]
 
   return (
@@ -47,6 +47,12 @@ const CartItem = ({ product }: {product: Product}) => {
               </button>
             </div>
           </div>
+        </div>
+
+        <div className="flex flex-col space-y-1 font-medium">
+          <span className="ml-auto line-clamp-1 text-sm">
+            {formatPrice(product.price)}
+          </span>
         </div>
       </div>
     </div>
