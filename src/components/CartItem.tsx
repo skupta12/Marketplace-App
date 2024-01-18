@@ -1,7 +1,7 @@
 "use client"
 
 import { PRODUCT_CATEGORIES } from "@/config";
-import { useCart } from "@/hooks/useCart";
+import { useCart } from "@/hooks/use-cart";
 import { formatPrice } from "@/lib/utils";
 import { Product } from "@/payload-types";
 import { ImageIcon, X } from "lucide-react";

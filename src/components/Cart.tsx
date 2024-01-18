@@ -14,7 +14,7 @@ import {
 import { Separator } from "./ui/separator";
 import { formatPrice } from "@/lib/utils";
 import { buttonVariants } from "./ui/button";
-import { useCart } from "@/hooks/useCart";
+import { useCart } from "@/hooks/use-cart";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import CartItem from "./CartItem";
 import { useEffect, useState } from "react";
