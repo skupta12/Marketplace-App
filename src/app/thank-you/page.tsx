@@ -8,6 +8,7 @@ import { PRODUCT_CATEGORIES } from '@/config'
 import { formatPrice } from '@/lib/utils'
 import Link from 'next/link'
 import PaymentStatus from '@/components/PaymentStatus'
+import { Loader2 } from 'lucide-react'
 
 interface PageProps {
   searchParams: {
@@ -69,8 +70,9 @@ const ThankYouPage = async ({
       <div>
         <div className='mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8 lg:py-32 xl:gap-x-24'>
           <div className='lg:col-start-2'>
-            <p className='text-sm font-medium text-blue-600'>
-              Order successful
+            <p className='flex items-center text-sm font-medium text-blue-600'>
+            {order._isPaid === false ? "Pending payment" : "Order successful"}
+            {order._isPaid === false && <Loader2 className='w-4 h-4 animate-spin ml-1.5' />}
             </p>
             <h1 className='mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl'>
               Thanks for ordering
@@ -88,7 +90,7 @@ const ThankYouPage = async ({
                 .
               </p>
             ) : (
-              <p className='mt-2 text-base text-muted-foreground'>
+              <p className='mt-6 text-base text-muted-foreground'>
                 We appreciate your order, and we&apos;re
                 currently processing it. So hang tight and
                 we&apos;ll send you confirmation very soon!
