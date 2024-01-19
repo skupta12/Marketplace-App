@@ -29,19 +29,19 @@ export const PRODUCT_CATEGORIES = [
         featured: [
             {
                 name: "Favorite Icon Picks",
-                href: "#",
+                href: "/products?category=icons",
                 imageSrc: '/nav/icons/picks.jpg',
             },
 
             {
                 name: "New Arrivals",
-                href: "#",
+                href: "/products?category=icons&sort=desc",
                 imageSrc: '/nav/icons/new.jpg',
             },
 
             {
                 name: "Bestselling Icons",
-                href: "#",
+                href: "/products?category=icons",
                 imageSrc: '/nav/icons/bestsellers.jpg',
             },
         ]
