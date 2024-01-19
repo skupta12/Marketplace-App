@@ -35,7 +35,6 @@ const ProductReel = (props: ProductReelProps) => {
 
   let map: (Product | null)[] = []
   if (products && products.length) {
-    //@ts-expect-error
     map = products
   } else if (isLoading) {
     map = new Array<null>(
