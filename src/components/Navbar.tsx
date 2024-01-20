@@ -33,43 +33,56 @@ const Navbar = async () => {
 
               <div className="ml-auto flex items-center">
                 <div className="flex lg:flex-1 items-center justify-end lg:space-x-6">
-    
-                    {user ? null : (
-                    <Link href='/sign-in' className={buttonVariants({
-                        variant: 'ghost',})}>
-                            Sign in
+                  {user ? null : (
+                    <Link
+                      href="/sign-in"
+                      className={buttonVariants({
+                        variant: "ghost",
+                      })}
+                    >
+                      Sign in
                     </Link>
-                    )}
+                  )}
 
-                    {user ? null : (
-                    <span className="h-6 w-px bg-gray-200" aria-hidden="true"></span>
-                    )}
+                  {user ? null : (
+                    <span
+                      className="h-6 w-px bg-gray-200"
+                      aria-hidden="true"
+                    ></span>
+                  )}
 
+                  <div className="hidden lg:block">
                     {user ? (
-                        <UserAccountNav user={user} />
+                      <UserAccountNav user={user} />
                     ) : (
-                        <Link href="/sign-up"
-                        className={buttonVariants({variant: "ghost",
-                        })}>
-                            Create Account
-                        </Link>
+                      <Link
+                        href="/sign-up"
+                        className={buttonVariants({ variant: "ghost" })}
+                      >
+                        Create Account
+                      </Link>
                     )}
+                  </div>
 
-                    {user ? (
-                    <span 
-                    className="h-6 w-px bg-gray-200" 
-                    aria-hidden="true"></span>
-                    ) : null}
+                  {user ? (
+                    <span
+                      className="h-6 w-px bg-gray-200"
+                      aria-hidden="true"
+                    ></span>
+                  ) : null}
 
-                    {user ? null : (
+                  {user ? null : (
                     <div className="flex lg:ml-6">
-                        <span className="h-6 w-px bg-gray-200" aria-hidden="true"></span>
+                      <span
+                        className="h-6 w-px bg-gray-200"
+                        aria-hidden="true"
+                      ></span>
                     </div>
-                    )}
+                  )}
 
-                    <div className="ml-4 flow-root lg:ml-6">
-                        <Cart />
-                    </div>
+                  <div className="ml-4 flow-root lg:ml-6">
+                    <Cart />
+                  </div>
                 </div>
               </div>
             </div>

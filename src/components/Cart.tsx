@@ -39,7 +39,7 @@ const Cart = () => {
 
   return (
     <Sheet>
-      <SheetTrigger className="group -m-2 flex items-center p-2">
+      <SheetTrigger className="group flex items-center p-2">
         <ShoppingCart
           className="h-5 w-6 flex-shrink-0 text-gray-400 group:hover:text-gray-500"
           aria-hidden="true"
