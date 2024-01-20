@@ -59,7 +59,7 @@ export function constructMetadata({
       creator: '@skupta',
     },
     icons,
-    metadataBase: new URL('https://marketplace-app-production-b024.up.railway.app'),
+    metadataBase: new URL('https://marketplace-app-production.up.railway.app'),
     ...(noIndex && {
       robots: {
         index: false,
