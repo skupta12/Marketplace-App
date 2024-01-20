@@ -1,17 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	reactStrictMode: true,
-  };
-  
-  module.exports = {
-	...nextConfig,
 	images: {
-	  domains: ['marketplace-app-production-b024.up.railway.app'],
+		remotePatterns: [
+			{
+				protocol: "http",
+				hostname: "localhost",
+			},
+			{
+				protocol: "https",
+				hostname: "marketplace-app-production-b024.up.railway.app",
+			},
+		],
 	},
-  }
-  
+};
 
-
+module.exports = nextConfig;
 
 
 
