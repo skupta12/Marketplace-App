@@ -50,7 +50,7 @@ function constructMetadata(_a) {
             description: description,
             images: [image],
             creator: '@skupta',
-        }, icons: icons, metadataBase: new URL('https://marketplace-app-production-b024.up.railway.app') }, (noIndex && {
+        }, icons: icons, metadataBase: new URL('https://marketplace-app-production.up.railway.app') }, (noIndex && {
         robots: {
             index: false,
             follow: false,
