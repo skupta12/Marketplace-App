@@ -76,20 +76,20 @@ var syncUser = function (_a) {
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0: return [4 /*yield*/, req.payload.findByID({
-                        collection: "users",
+                        collection: 'users',
                         id: req.user.id,
                     })];
                 case 1:
                     fullUser = _b.sent();
-                    if (!(fullUser && typeof fullUser === "object")) return [3 /*break*/, 3];
+                    if (!(fullUser && typeof fullUser === 'object')) return [3 /*break*/, 3];
                     products = fullUser.products;
                     allIDs_1 = __spreadArray([], ((products === null || products === void 0 ? void 0 : products.map(function (product) {
-                        return typeof product === "object" ? product.id : product;
+                        return typeof product === 'object' ? product.id : product;
                     })) || []), true);
                     createdProductIDs = allIDs_1.filter(function (id, index) { return allIDs_1.indexOf(id) === index; });
                     dataToUpdate = __spreadArray(__spreadArray([], createdProductIDs, true), [doc.id], false);
                     return [4 /*yield*/, req.payload.update({
-                            collection: "users",
+                            collection: 'users',
                             id: fullUser.id,
                             data: {
                                 products: dataToUpdate,
@@ -109,12 +109,12 @@ var isAdminOrHasAccess = function () {
         var user = _user;
         if (!user)
             return false;
-        if (user.role === "admin")
+        if (user.role === 'admin')
             return true;
         var userProductIDs = (user.products || []).reduce(function (acc, product) {
             if (!product)
                 return acc;
-            if (typeof product === "string") {
+            if (typeof product === 'string') {
                 acc.push(product);
             }
             else {
@@ -130,9 +130,9 @@ var isAdminOrHasAccess = function () {
     };
 };
 exports.Products = {
-    slug: "products",
+    slug: 'products',
     admin: {
-        useAsTitle: "name",
+        useAsTitle: 'name',
     },
     access: {
         read: isAdminOrHasAccess(),
@@ -148,12 +148,12 @@ exports.Products = {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
-                            if (!(args.operation === "create")) return [3 /*break*/, 2];
+                            if (!(args.operation === 'create')) return [3 /*break*/, 2];
                             data = args.data;
                             return [4 /*yield*/, stripe_1.stripe.products.create({
                                     name: data.name,
                                     default_price_data: {
-                                        currency: "USD",
+                                        currency: 'USD',
                                         unit_amount: Math.round(data.price * 100),
                                     },
                                 })];
@@ -162,7 +162,7 @@ exports.Products = {
                             updated = __assign(__assign({}, data), { stripeId: createdProduct.id, priceId: createdProduct.default_price });
                             return [2 /*return*/, updated];
                         case 2:
-                            if (!(args.operation === "update")) return [3 /*break*/, 4];
+                            if (!(args.operation === 'update')) return [3 /*break*/, 4];
                             data = args.data;
                             return [4 /*yield*/, stripe_1.stripe.products.update(data.stripeId, {
                                     name: data.name,
@@ -180,9 +180,9 @@ exports.Products = {
     },
     fields: [
         {
-            name: "user",
-            type: "relationship",
-            relationTo: "users",
+            name: 'user',
+            type: 'relationship',
+            relationTo: 'users',
             required: true,
             hasMany: false,
             admin: {
@@ -190,28 +190,28 @@ exports.Products = {
             },
         },
         {
-            name: "name",
-            label: "Name",
-            type: "text",
+            name: 'name',
+            label: 'Name',
+            type: 'text',
             required: true,
         },
         {
-            name: "description",
-            type: "textarea",
-            label: "Product details",
+            name: 'description',
+            type: 'textarea',
+            label: 'Product details',
         },
         {
-            name: "price",
-            label: "Price in USD",
+            name: 'price',
+            label: 'Price in USD',
             min: 0,
             max: 1000,
-            type: "number",
+            type: 'number',
             required: true,
         },
         {
-            name: "category",
-            label: "Category",
-            type: "select",
+            name: 'category',
+            label: 'Category',
+            type: 'select',
             options: config_1.PRODUCT_CATEGORIES.map(function (_a) {
                 var label = _a.label, value = _a.value;
                 return ({ label: label, value: value });
@@ -219,87 +219,87 @@ exports.Products = {
             required: true,
         },
         {
-            name: "product_files",
-            label: "Product file(s)",
-            type: "relationship",
+            name: 'product_files',
+            label: 'Product file(s)',
+            type: 'relationship',
             required: true,
-            relationTo: "product_files",
+            relationTo: 'product_files',
             hasMany: false,
         },
         {
-            name: "approvedForSale",
-            label: "Product Status",
-            type: "select",
-            defaultValue: "pending",
+            name: 'approvedForSale',
+            label: 'Product Status',
+            type: 'select',
+            defaultValue: 'pending',
             access: {
                 create: function (_a) {
                     var req = _a.req;
-                    return req.user.role === "admin";
+                    return req.user.role === 'admin';
                 },
                 read: function (_a) {
                     var req = _a.req;
-                    return req.user.role === "admin";
+                    return req.user.role === 'admin';
                 },
                 update: function (_a) {
                     var req = _a.req;
-                    return req.user.role === "admin";
+                    return req.user.role === 'admin';
                 },
             },
             options: [
                 {
-                    label: "Pending verification",
-                    value: "pending",
+                    label: 'Pending verification',
+                    value: 'pending',
                 },
                 {
-                    label: "Approved",
-                    value: "approved",
+                    label: 'Approved',
+                    value: 'approved',
                 },
                 {
-                    label: "Denied",
-                    value: "denied",
+                    label: 'Denied',
+                    value: 'denied',
                 },
             ],
         },
         {
-            name: "priceId",
+            name: 'priceId',
             access: {
                 create: function () { return false; },
                 read: function () { return false; },
                 update: function () { return false; },
             },
-            type: "text",
+            type: 'text',
             admin: {
                 hidden: true,
             },
         },
         {
-            name: "stripeId",
+            name: 'stripeId',
             access: {
                 create: function () { return false; },
                 read: function () { return false; },
                 update: function () { return false; },
             },
-            type: "text",
+            type: 'text',
             admin: {
                 hidden: true,
             },
         },
         {
-            name: "images",
-            type: "array",
-            label: "Product images",
+            name: 'images',
+            type: 'array',
+            label: 'Product images',
             minRows: 1,
             maxRows: 4,
             required: true,
             labels: {
-                singular: "Image",
-                plural: "Images",
+                singular: 'Image',
+                plural: 'Images',
             },
             fields: [
                 {
-                    name: "image",
-                    type: "upload",
-                    relationTo: "media",
+                    name: 'image',
+                    type: 'upload',
+                    relationTo: 'media',
                     required: true,
                 },
             ],

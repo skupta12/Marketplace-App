@@ -48,26 +48,28 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Media = void 0;
-var isAdminOrHasAccessToImages = function () { return function (_a) {
-    var req = _a.req;
-    return __awaiter(void 0, void 0, void 0, function () {
-        var user;
-        return __generator(this, function (_b) {
-            user = req.user;
-            if (!user)
-                return [2 /*return*/, false];
-            if (user.role === "admin")
-                return [2 /*return*/, true];
-            return [2 /*return*/, {
-                    user: {
-                        equals: req.user.id,
-                    },
-                }];
+var isAdminOrHasAccessToImages = function () {
+    return function (_a) {
+        var req = _a.req;
+        return __awaiter(void 0, void 0, void 0, function () {
+            var user;
+            return __generator(this, function (_b) {
+                user = req.user;
+                if (!user)
+                    return [2 /*return*/, false];
+                if (user.role === 'admin')
+                    return [2 /*return*/, true];
+                return [2 /*return*/, {
+                        user: {
+                            equals: req.user.id,
+                        },
+                    }];
+            });
         });
-    });
-}; };
+    };
+};
 exports.Media = {
-    slug: "media",
+    slug: 'media',
     hooks: {
         beforeChange: [
             function (_a) {
@@ -85,7 +87,7 @@ exports.Media = {
                     switch (_b.label) {
                         case 0:
                             referer = req.headers.referer;
-                            if (!req.user || !(referer === null || referer === void 0 ? void 0 : referer.includes("sell"))) {
+                            if (!req.user || !(referer === null || referer === void 0 ? void 0 : referer.includes('sell'))) {
                                 return [2 /*return*/, true];
                             }
                             return [4 /*yield*/, isAdminOrHasAccessToImages()({ req: req })];
@@ -100,39 +102,39 @@ exports.Media = {
     admin: {
         hidden: function (_a) {
             var user = _a.user;
-            return user.role !== "admin";
-        }
+            return user.role !== 'admin';
+        },
     },
     upload: {
-        staticURL: "/media",
-        staticDir: "media",
+        staticURL: '/media',
+        staticDir: 'media',
         imageSizes: [
             {
-                name: "thumbnail",
+                name: 'thumbnail',
                 width: 400,
                 height: 300,
-                position: "centre",
+                position: 'centre',
             },
             {
-                name: "card",
+                name: 'card',
                 width: 768,
                 height: 1024,
-                position: "centre",
+                position: 'centre',
             },
             {
-                name: "tablet",
+                name: 'tablet',
                 width: 1024,
                 height: undefined,
-                position: "centre",
+                position: 'centre',
             },
         ],
-        mimeTypes: ["image/*"],
+        mimeTypes: ['image/*'],
     },
     fields: [
         {
-            name: "user",
-            type: "relationship",
-            relationTo: "users",
+            name: 'user',
+            type: 'relationship',
+            relationTo: 'users',
             required: true,
             hasMany: false,
             admin: {
