@@ -60,11 +60,21 @@ export default function Home() {
             </Button>
           </div>
         </div>
+        <ProductReel
+          query={{ sort: 'desc', limit: 4 ,}}
+          href='/products?sort=recent'
+          title='Brand New'
+        />
 
         <ProductReel
-          query={{ sort: 'desc', limit: 4 }}
+          query={{ sort: 'desc', limit: 4 , category: "icons"}}
           href='/products?sort=recent'
-          title='Brand new'
+          title='Icons'
+        />
+         <ProductReel
+          query={{ sort: 'desc', limit: 4 , category: "ui_kits"}}
+          href='/products?sort=recent'
+          title='Ui Kits'
         />
       </MaxWidthWrapper>
 
