@@ -32,7 +32,7 @@ const Navbar = async () => {
               </div>
 
               <div className="ml-auto flex items-center">
-                <div className="flex lg:flex-1 items-center justify-end lg:space-x-6">
+                <div className="flex lg:flex-1 items-center justify-end lg:space-x-3">
                   {user ? null : (
                     <Link
                       href="/sign-in"
@@ -50,19 +50,20 @@ const Navbar = async () => {
                       aria-hidden="true"
                     ></span>
                   )}
-
-                  <div className="hidden lg:block">
+  
                     {user ? (
                       <UserAccountNav user={user} />
                     ) : (
                       <Link
                         href="/sign-up"
-                        className={buttonVariants({ variant: "ghost" })}
+                        className={buttonVariants({ 
+                          variant: "ghost", 
+                          className: "hidden lg:flex" 
+                        })}
                       >
                         Create Account
                       </Link>
-                    )}
-                  </div>
+                    )}              
 
                   {user ? (
                     <span
