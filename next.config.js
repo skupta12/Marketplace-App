@@ -6,10 +6,10 @@ const nextConfig = {
 				protocol: "http",
 				hostname: "localhost",
 			},
-			// {
-			// 	protocol: "https",
-			// 	hostname: "digitalhippo-production.up.railway.app",
-			// },
+			{
+				protocol: "https",
+				hostname: "marketplace-app-production.up.railway.app",
+			},
 		],
 	},
 };
