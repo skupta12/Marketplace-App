@@ -61,19 +61,19 @@ export default function Home() {
           </div>
         </div>
         <ProductReel
-          query={{ sort: 'desc', limit: 4}}
+          query={{ sort: 'desc', limit: 3}}
           href='/products?sort=recent'
           title='Brand New'
         />
 
         <ProductReel
-          query={{ sort: 'desc', limit: 4 , category: "icons"}}
+          query={{ sort: 'desc', limit: 3 , category: "icons"}}
           href='/products'
           title='Icons'
         />
 
          <ProductReel
-          query={{ sort: 'desc', limit: 4 , category: "ui_kits"}}
+          query={{ sort: 'desc', limit: 3 , category: "ui_kits"}}
           href='/products'
           title='Ui Kits'
         />
